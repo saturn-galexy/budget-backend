@@ -1,21 +1,20 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
 require("dotenv").config();
+require('./models/connection');
 
-const app = express();
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 
 // ── Middleware ─────────────────────────────────────────────────────────────────
+var app = express();
+const cors = require('cors');
 app.use(cors());
+app.use(logger('dev'));
 app.use(express.json());
-
-// ── Connexion MongoDB ──────────────────────────────────────────────────────────
-const connectionString = process.env.CONNECTION_STRING;
-
-mongoose.connect(connectionString, {
-  connectTimeoutMS: 10000,
-  serverSelectionTimeoutMS: 10000,
-});
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
 // ── Routes ─────────────────────────────────────────────────────────────────────
 app.use("/auth", require("./routes/auth"));
@@ -30,5 +29,13 @@ app.get("/", (req, res) => {
   res.json({ status: "OK", message: "Budget API opérationnelle" });
 });
 
-// ── Démarrage ──────────────────────────────────────────────────────────────────
+// Pour Vercel (serverless)
 module.exports = app;
+
+// Pour local (development)
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 3001;
+  app.listen(PORT, () => {
+    console.log(`🚀 Serveur démarré sur le port ${PORT}`);
+  });
+}
