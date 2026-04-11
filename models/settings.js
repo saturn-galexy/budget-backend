@@ -6,4 +6,4 @@ const SettingsSchema = new mongoose.Schema({
   accounts:       { type: Array, default: [] },
 }, { timestamps: true });
 
-module.exports = mongoose.model("Settings", SettingsSchema);
+module.exports = mongoose.model("Sexxs

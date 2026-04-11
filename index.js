@@ -12,17 +12,18 @@ app.use(express.json());
 // ── Connexion MongoDB ──────────────────────────────────────────────────────────
 const connectionString = process.env.CONNECTION_STRING;
 
-mongoose.connect(connectionString, { connectTimeoutMS: 2000 })
-  .then(() => console.log("Database connected"))
-  .catch(error => console.error(error));
+mongoose.connect(connectionString, {
+  connectTimeoutMS: 10000,
+  serverSelectionTimeoutMS: 10000,
+});
 
 // ── Routes ─────────────────────────────────────────────────────────────────────
-app.use("/auth",         require("./routes/auth"));
+app.use("/auth", require("./routes/auth"));
 app.use("/transactions", require("./routes/transactions"));
-app.use("/budgets",      require("./routes/budgets"));
-app.use("/envelopes",    require("./routes/envelopes"));
-app.use("/learned",      require("./routes/learned"));
-app.use("/settings",     require("./routes/settings"));
+app.use("/budgets", require("./routes/budgets"));
+app.use("/envelopes", require("./routes/envelopes"));
+app.use("/learned", require("./routes/learned"));
+app.use("/settings", require("./routes/settings"));
 
 // ── Route de santé ─────────────────────────────────────────────────────────────
 app.get("/", (req, res) => {
@@ -30,7 +31,4 @@ app.get("/", (req, res) => {
 });
 
 // ── Démarrage ──────────────────────────────────────────────────────────────────
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`🚀 Serveur démarré sur le port ${PORT}`);
-});
+module.exports = app;
