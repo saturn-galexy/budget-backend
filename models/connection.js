@@ -2,6 +2,22 @@ const mongoose = require('mongoose');
 
 const connectionString = process.env.CONNECTION_STRING;
 
-mongoose.connect(connectionString, { connectTimeoutMS: 2000 })
-  .then(() => console.log('Database connected'))
-  .catch(error => console.error(error));
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
+
+async function connectDB() {
+  if (cached.conn) return cached.conn;
+
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(connectionString)
+      .then(mongoose => mongoose);
+  }
+
+  cached.conn = await cached.promise;
+  return cached.conn;
+}
+
+module.exports = connectDB;
