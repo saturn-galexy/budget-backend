@@ -8,6 +8,7 @@ const TransactionSchema = new mongoose.Schema({
   amount:   { type: Number, required: true },
   account:  { type: String, required: true },
   source:   { type: String, enum: ["bourso", "amex"], required: true },
+  csvFile: { type: String, default: null },
   hidden:   { type: Boolean, default: false },
   owner:    { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
 }, { timestamps: true });
