@@ -39,3 +39,6 @@ if (process.env.NODE_ENV !== 'production') {
     console.log(`🚀 Serveur démarré sur le port ${PORT}`);
   });
 }
+app.get("/version", (req, res) => {
+  res.json({ node: process.version });
+});
