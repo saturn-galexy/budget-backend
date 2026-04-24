@@ -23,6 +23,7 @@ app.use("/budgets", require("./routes/budgets"));
 app.use("/envelopes", require("./routes/envelopes"));
 app.use("/learned", require("./routes/learned"));
 app.use("/settings", require("./routes/settings"));
+app.use("/categories", require("./routes/categories"));
 
 // ── Route de santé ─────────────────────────────────────────────────────────────
 app.get("/", (req, res) => {

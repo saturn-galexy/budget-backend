@@ -1,0 +1,27 @@
+const DEFAULT_CATEGORIES = [
+    { name: "Loyer & charges",       emoji: "🏠", color: "#4A7C6F", family: "Vie courante",      isDefault: true },
+    { name: "Alimentation",          emoji: "🛒", color: "#5E8A3A", family: "Vie courante",      isDefault: true },
+    { name: "Énergie",               emoji: "⚡", color: "#D4A017", family: "Vie courante",      isDefault: true },
+    { name: "Téléphonie & internet", emoji: "📱", color: "#1A6B8A", family: "Vie courante",      isDefault: true },
+    { name: "Assurances",            emoji: "🛡️", color: "#6B7280", family: "Vie courante",      isDefault: true },
+    { name: "Santé",                 emoji: "🏥", color: "#D4435A", family: "Vie courante",      isDefault: true },
+    { name: "Transports",            emoji: "🚗", color: "#3A7CC9", family: "Vie courante",      isDefault: true },
+    { name: "Impôts & taxes",        emoji: "📋", color: "#8B7355", family: "Vie courante",      isDefault: true },
+    { name: "Admin",                 emoji: "📂", color: "#8E8E8E", family: "Vie courante",      isDefault: true },
+    { name: "Restaurants & bars",    emoji: "🍽️", color: "#C97B3A", family: "Loisirs",           isDefault: true },
+    { name: "Snacking & coffee",     emoji: "☕", color: "#A0522D", family: "Loisirs",           isDefault: true },
+    { name: "Abonnements",           emoji: "📺", color: "#7B5EA7", family: "Loisirs",           isDefault: true },
+    { name: "Logiciels",             emoji: "💻", color: "#2E86AB", family: "Loisirs",           isDefault: true },
+    { name: "Sport",                 emoji: "🏃", color: "#3DAA6D", family: "Loisirs",           isDefault: true },
+    { name: "Shopping",              emoji: "🛍️", color: "#C96B8A", family: "Loisirs",           isDefault: true },
+    { name: "High-tech",             emoji: "📦", color: "#4A90D9", family: "Loisirs",           isDefault: true },
+    { name: "Dons & solidarité",     emoji: "❤️", color: "#E05C5C", family: "Loisirs",           isDefault: true },
+    { name: "Voyages",               emoji: "✈️", color: "#2196A8", family: "Loisirs",           isDefault: true },
+    { name: "Épargne",               emoji: "💰", color: "#5A6E8C", family: "Épargne & divers",  isDefault: true },
+    { name: "Prévoyance",            emoji: "🛡️", color: "#7A8B6E", family: "Épargne & divers",  isDefault: true },
+    { name: "Remboursement reçu",    emoji: "↩️", color: "#3DAA6D", family: "Épargne & divers",  isDefault: true },
+    { name: "Retraits cash",         emoji: "💵", color: "#9E8060", family: "Épargne & divers",  isDefault: true },
+    { name: "Non catégorisé",        emoji: "❓", color: "#AAAAAA", family: "Épargne & divers",  isDefault: true },
+  ];
+  
+  module.exports = DEFAULT_CATEGORIES;
