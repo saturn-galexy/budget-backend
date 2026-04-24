@@ -6,6 +6,7 @@ const UserSchema = new mongoose.Schema({
   password: { type: String, required: true },   // hashé avec bcrypt
   token:    { type: String, default: null },     // uid2(32) à la connexion
   role:     { type: String, enum: ["admin", "member"], default: "member" },
+  onboardingDone: { type: Boolean, default: false }
 }, { timestamps: true });
 
 module.exports = mongoose.model("User", UserSchema);

@@ -90,7 +90,18 @@ router.get("/verify", authMiddleware, (req, res) => {
     result: true,
     username: req.user.username,
     email: req.user.email,
+    onboardingDone: req.user.onboardingDone
   });
+});
+
+router.post("/onboarding-done", authMiddleware, async (req, res) => {
+  try {
+    req.user.onboardingDone = true;
+    await req.user.save();
+    res.json({ result: true });
+  } catch (err) {
+    res.status(500).json({ result: false, error: err.message });
+  }
 });
 
 module.exports = router;
